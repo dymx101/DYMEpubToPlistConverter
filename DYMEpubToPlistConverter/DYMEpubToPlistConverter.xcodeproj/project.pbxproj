@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		EA21B8501BF43585006A0444 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21B84F1BF43585006A0444 /* main.m */; };
 		EA21B8531BF43585006A0444 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21B8521BF43585006A0444 /* AppDelegate.m */; };
-		EA21B8561BF43585006A0444 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21B8551BF43585006A0444 /* ViewController.m */; };
+		EA21B8561BF43585006A0444 /* DYMEpubConvertVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21B8551BF43585006A0444 /* DYMEpubConvertVC.m */; };
 		EA21B8591BF43585006A0444 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA21B8571BF43585006A0444 /* Main.storyboard */; };
 		EA21B85B1BF43585006A0444 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA21B85A1BF43585006A0444 /* Assets.xcassets */; };
 		EA21B85E1BF43585006A0444 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA21B85C1BF43585006A0444 /* LaunchScreen.storyboard */; };
 		EA21B8661BF4361A006A0444 /* epub in Resources */ = {isa = PBXBuildFile; fileRef = EA21B8651BF4361A006A0444 /* epub */; };
+		EA21B8691BF438B7006A0444 /* DYMEPubConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21B8681BF438B7006A0444 /* DYMEPubConverter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,13 +22,15 @@
 		EA21B84F1BF43585006A0444 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EA21B8511BF43585006A0444 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		EA21B8521BF43585006A0444 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		EA21B8541BF43585006A0444 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		EA21B8551BF43585006A0444 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EA21B8541BF43585006A0444 /* DYMEpubConvertVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYMEpubConvertVC.h; sourceTree = "<group>"; };
+		EA21B8551BF43585006A0444 /* DYMEpubConvertVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYMEpubConvertVC.m; sourceTree = "<group>"; };
 		EA21B8581BF43585006A0444 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EA21B85A1BF43585006A0444 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA21B85D1BF43585006A0444 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA21B85F1BF43585006A0444 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA21B8651BF4361A006A0444 /* epub */ = {isa = PBXFileReference; lastKnownFileType = folder; path = epub; sourceTree = "<group>"; };
+		EA21B8671BF438B7006A0444 /* DYMEPubConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYMEPubConverter.h; sourceTree = "<group>"; };
+		EA21B8681BF438B7006A0444 /* DYMEPubConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYMEPubConverter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,13 +66,15 @@
 			children = (
 				EA21B8511BF43585006A0444 /* AppDelegate.h */,
 				EA21B8521BF43585006A0444 /* AppDelegate.m */,
-				EA21B8541BF43585006A0444 /* ViewController.h */,
-				EA21B8551BF43585006A0444 /* ViewController.m */,
+				EA21B8541BF43585006A0444 /* DYMEpubConvertVC.h */,
+				EA21B8551BF43585006A0444 /* DYMEpubConvertVC.m */,
 				EA21B8571BF43585006A0444 /* Main.storyboard */,
 				EA21B85A1BF43585006A0444 /* Assets.xcassets */,
 				EA21B85C1BF43585006A0444 /* LaunchScreen.storyboard */,
 				EA21B85F1BF43585006A0444 /* Info.plist */,
 				EA21B84E1BF43585006A0444 /* Supporting Files */,
+				EA21B8671BF438B7006A0444 /* DYMEPubConverter.h */,
+				EA21B8681BF438B7006A0444 /* DYMEPubConverter.m */,
 			);
 			path = DYMEpubToPlistConverter;
 			sourceTree = "<group>";
@@ -153,9 +158,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA21B8561BF43585006A0444 /* ViewController.m in Sources */,
+				EA21B8561BF43585006A0444 /* DYMEpubConvertVC.m in Sources */,
 				EA21B8531BF43585006A0444 /* AppDelegate.m in Sources */,
 				EA21B8501BF43585006A0444 /* main.m in Sources */,
+				EA21B8691BF438B7006A0444 /* DYMEPubConverter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
