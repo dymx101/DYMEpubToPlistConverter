@@ -24,7 +24,10 @@
     [_converter loadEpubFiles:^{
         NSString *bookName = [_converter bookNameAtIndex:0];
         NSLog(@"%@", bookName);
+        [_converter parseAtIndex:0];
     }];
+    
+    
 }
 
 

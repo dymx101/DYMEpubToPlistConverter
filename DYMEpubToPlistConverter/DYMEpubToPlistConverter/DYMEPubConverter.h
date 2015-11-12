@@ -16,4 +16,8 @@
 
 -(NSString *)bookNameAtIndex:(NSUInteger)index;
 
+-(NSString *)bookUnzipPathAtIndex:(NSUInteger)index;
+
+-(void)parseAtIndex:(NSUInteger)index;
+
 @end
