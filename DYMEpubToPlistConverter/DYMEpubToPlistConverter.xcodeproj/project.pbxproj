@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8D9DC5BD39650B52ABDDBD0F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7CD8557D323AD62817BF1DB /* libPods.a */; };
+		EA0A471A1BF5CCE800C72BCF /* DYMEPubBook.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0A47191BF5CCE800C72BCF /* DYMEPubBook.m */; };
 		EA21B8501BF43585006A0444 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21B84F1BF43585006A0444 /* main.m */; };
 		EA21B8531BF43585006A0444 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21B8521BF43585006A0444 /* AppDelegate.m */; };
 		EA21B8561BF43585006A0444 /* DYMEpubConvertVC.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21B8551BF43585006A0444 /* DYMEpubConvertVC.m */; };
@@ -16,12 +17,15 @@
 		EA21B85E1BF43585006A0444 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA21B85C1BF43585006A0444 /* LaunchScreen.storyboard */; };
 		EA21B8661BF4361A006A0444 /* epub in Resources */ = {isa = PBXBuildFile; fileRef = EA21B8651BF4361A006A0444 /* epub */; };
 		EA21B8691BF438B7006A0444 /* DYMEPubConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21B8681BF438B7006A0444 /* DYMEPubConverter.m */; };
+		EAE3484F1BF6345F009D86AD /* DYMEPubChapterFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE3484E1BF6345F009D86AD /* DYMEPubChapterFile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0187B348E0107463459D19EB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C884ACE3C41CFA9BC114C726 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D7CD8557D323AD62817BF1DB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA0A47181BF5CCE800C72BCF /* DYMEPubBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYMEPubBook.h; sourceTree = "<group>"; };
+		EA0A47191BF5CCE800C72BCF /* DYMEPubBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYMEPubBook.m; sourceTree = "<group>"; };
 		EA21B84B1BF43585006A0444 /* DYMEpubToPlistConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DYMEpubToPlistConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA21B84F1BF43585006A0444 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EA21B8511BF43585006A0444 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -35,6 +39,8 @@
 		EA21B8651BF4361A006A0444 /* epub */ = {isa = PBXFileReference; lastKnownFileType = folder; path = epub; sourceTree = "<group>"; };
 		EA21B8671BF438B7006A0444 /* DYMEPubConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYMEPubConverter.h; sourceTree = "<group>"; };
 		EA21B8681BF438B7006A0444 /* DYMEPubConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYMEPubConverter.m; sourceTree = "<group>"; };
+		EAE3484D1BF6345F009D86AD /* DYMEPubChapterFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYMEPubChapterFile.h; sourceTree = "<group>"; };
+		EAE3484E1BF6345F009D86AD /* DYMEPubChapterFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYMEPubChapterFile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,10 @@
 				EA21B84E1BF43585006A0444 /* Supporting Files */,
 				EA21B8671BF438B7006A0444 /* DYMEPubConverter.h */,
 				EA21B8681BF438B7006A0444 /* DYMEPubConverter.m */,
+				EA0A47181BF5CCE800C72BCF /* DYMEPubBook.h */,
+				EA0A47191BF5CCE800C72BCF /* DYMEPubBook.m */,
+				EAE3484D1BF6345F009D86AD /* DYMEPubChapterFile.h */,
+				EAE3484E1BF6345F009D86AD /* DYMEPubChapterFile.m */,
 			);
 			path = DYMEpubToPlistConverter;
 			sourceTree = "<group>";
@@ -234,8 +244,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA21B8561BF43585006A0444 /* DYMEpubConvertVC.m in Sources */,
+				EA0A471A1BF5CCE800C72BCF /* DYMEPubBook.m in Sources */,
 				EA21B8531BF43585006A0444 /* AppDelegate.m in Sources */,
 				EA21B8501BF43585006A0444 /* main.m in Sources */,
+				EAE3484F1BF6345F009D86AD /* DYMEPubChapterFile.m in Sources */,
 				EA21B8691BF438B7006A0444 /* DYMEPubConverter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

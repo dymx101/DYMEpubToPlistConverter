@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DYMEPubBook.h"
 
 @interface DYMEPubConverter : NSObject
 
@@ -14,10 +15,6 @@
 
 -(void)loadEpubFiles:(dispatch_block_t)completion;
 
--(NSString *)bookNameAtIndex:(NSUInteger)index;
-
--(NSString *)bookUnzipPathAtIndex:(NSUInteger)index;
-
--(void)parseAtIndex:(NSUInteger)index;
+-(DYMEPubBook *)bookAtIndex:(NSUInteger)index;
 
 @end
