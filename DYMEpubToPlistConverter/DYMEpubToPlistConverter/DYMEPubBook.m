@@ -90,6 +90,8 @@
     [self parseTocNcx];
     
     [self loadContents];
+    
+    [self convertToPlist];
 }
 
 #pragma mark - xml parse
@@ -130,6 +132,15 @@
     
     NSLog(@"content opf:%@", content);
     TBXML *contentxml = [TBXML tbxmlWithXMLString:content error:nil];
+    
+    // Creator
+    TBXMLElement *metaData = [TBXML childElementNamed:@"metadata" parentElement:contentxml.rootXMLElement];
+    if (metaData != nil) {
+        TBXMLElement *creator = [TBXML childElementNamed:@"dc:creator" parentElement:metaData];
+        if (creator != nil) {
+            _creator = [TBXML textForElement:creator];
+        }
+    }
     
     // Manifest
     TBXMLElement *manifest = [TBXML childElementNamed:@"manifest" parentElement:contentxml.rootXMLElement];
@@ -231,6 +242,53 @@
     while ((r = [s rangeOfString:@"<[^>]+>" options:NSRegularExpressionSearch]).location != NSNotFound)
         s = [s stringByReplacingCharactersInRange:r withString:@""];
     return s;
+}
+
+-(NSArray *)sortedChapters {
+    NSMutableArray *sortedChapters = [NSMutableArray array];
+    [self.spines enumerateObjectsUsingBlock:^(NSString * _Nonnull chapterID, NSUInteger idx, BOOL * _Nonnull stop) {
+        id chapter = self.chapterFileDic[chapterID];
+        if (chapter) {
+            [sortedChapters addObject:chapter];
+        }
+    }];
+    
+    return sortedChapters;
+}
+
+-(void)convertToPlist {
+    NSArray *sortedChapter = [self sortedChapters];
+    
+    NSMutableDictionary *bookDic = [NSMutableDictionary dictionary];
+    bookDic[@"status"] = @"已完成";
+    bookDic[@"author"] = self.creator;
+    bookDic[@"isbn"] = @"12345678";
+    bookDic[@"src"] = @"default.png";
+    bookDic[@"title"] = self.bookName;
+    bookDic[@"cover"] = @"no_cover.png";
+    
+    NSMutableArray *partTitleArr = [NSMutableArray array];
+    bookDic[@"partTitleArr"] = partTitleArr;
+    [partTitleArr addObject:@"章节列表"];
+    
+    NSMutableArray *chapterArrArr = [NSMutableArray array];
+    bookDic[@"chapterArrArr"] = chapterArrArr;
+    
+    NSMutableArray *innerChapters = [NSMutableArray array];
+    [chapterArrArr addObject:innerChapters];
+    
+    [sortedChapter enumerateObjectsUsingBlock:^(DYMEPubChapterFile *  _Nonnull chapter, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMutableDictionary *chapterDic = [NSMutableDictionary dictionary];
+        chapterDic[@"chapterContent"] = chapter.content ? : @"";
+        chapterDic[@"chapterTitle"] = chapter.title;
+        chapterDic[@"chapterSrcs"] = @" ";
+        chapterDic[@"href"] = chapter.href;
+        
+        [innerChapters addObject:chapterDic];
+    }];
+    
+    NSString *plistPath = [_contentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", self.bookName]];
+    [bookDic writeToFile:plistPath atomically:YES];
 }
 
 @end

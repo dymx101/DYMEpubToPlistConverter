@@ -15,7 +15,8 @@
 @property (nonatomic, strong, readonly) NSString *unzipPath;
 /// 书名
 @property (nonatomic, strong, readonly) NSString *bookName;
-
+/// 创建者/作者
+@property (nonatomic, strong, readonly) NSString *creator;
 
 -(instancetype)initWithEPubPath:(NSString *)epubPath;
 
