@@ -69,9 +69,9 @@
         
         BOOL ret = [za UnzipFileTo:unzipPath overWrite:YES];
         if (ret) {
-            NSLog(@"Unzip OK!\nfrom: %@\nto: %@ ", _epubPath, unzipPath);
+//            NSLog(@"Unzip OK!\nfrom: %@\nto: %@ ", _epubPath, unzipPath);
         } else {
-            NSLog(@"Unzip failed!\nfrom: %@\nto: %@ ", _epubPath, unzipPath);
+//            NSLog(@"Unzip failed!\nfrom: %@\nto: %@ ", _epubPath, unzipPath);
         }
         
         [za UnzipCloseFile];
@@ -79,10 +79,6 @@
 }
 
 -(void)parse {
-    
-    if ([self.bookName isEqualToString:@"吉檀迦利"]) {
-        NSLog(@"aaa");
-    }
     
     [self unzip];
     
@@ -114,7 +110,7 @@
     NSString *metaPath = [unzipPath stringByAppendingPathComponent:@"META-INF/container.xml"];
     
     NSString *metaString = [NSString stringWithContentsOfFile:metaPath encoding:NSUTF8StringEncoding error:nil];
-    NSLog(@"meta container:%@", metaString);
+//    NSLog(@"meta container:%@", metaString);
     TBXML *metaxml = [TBXML tbxmlWithXMLString:metaString error:nil];
     TBXMLElement *root = metaxml.rootXMLElement;
     TBXMLElement *rootfiles = root->currentChild;
@@ -143,7 +139,7 @@
     NSString *opfPath = self.opfFilePath;
     NSString *content = [NSString stringWithContentsOfFile:opfPath encoding:NSUTF8StringEncoding error:nil];
     
-    NSLog(@"content opf:%@", content);
+//    NSLog(@"content opf:%@", content);
     TBXML *contentxml = [TBXML tbxmlWithXMLString:content error:nil];
     
     // Creator
@@ -219,7 +215,7 @@
     }
     
     TBXML *tocxml = [TBXML tbxmlWithXMLString:tocString error:nil];
-    NSLog(@"toc ncx content:%@", tocString);
+//    NSLog(@"toc ncx content:%@", tocString);
     
     // NAV Map
     TBXMLElement *navmap = [TBXML childElementNamed:navMapKey parentElement:tocxml.rootXMLElement];
@@ -244,7 +240,7 @@
 -(void)loadContents {
     NSArray *allChapters = [self.chapterFileDic allValues];
     [allChapters enumerateObjectsUsingBlock:^(DYMEPubChapterFile *  _Nonnull chapterFile, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSLog(@"%@", chapterFile);
+//        NSLog(@"%@", chapterFile);
         if (chapterFile.href && [chapterFile.mediaType isEqualToString:@"application/xhtml+xml"]) {
             NSString *chapterPath = [_contentPath stringByAppendingPathComponent:chapterFile.href];
             NSString *content = [NSString stringWithContentsOfFile:chapterPath encoding:NSUTF8StringEncoding error:nil];
@@ -322,6 +318,8 @@
     
     NSString *plistPath = [[self plistPath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", bookDic[@"title"]]];
     [bookDic writeToFile:plistPath atomically:YES];
+    
+    NSLog(@"转化完成：%@", plistPath);
 }
 
 @end
