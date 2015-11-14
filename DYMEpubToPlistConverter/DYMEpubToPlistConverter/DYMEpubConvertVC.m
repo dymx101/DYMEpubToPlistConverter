@@ -8,6 +8,7 @@
 
 #import "DYMEpubConvertVC.h"
 #import "DYMEPubConverter.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface DYMEpubConvertVC () {
     DYMEPubConverter    *_converter;
@@ -21,13 +22,32 @@
     [super viewDidLoad];
     
     _converter = [DYMEPubConverter new];
-    [_converter loadEpubFiles:^{
-        DYMEPubBook *book = [_converter bookAtIndex:0];
-        [book parse];
-    }];
-    
-    
 }
+
+- (IBAction)startConvertion:(UIButton *)sender {
+    sender.enabled = NO;
+    
+    [_converter loadEpubFiles:^{
+        
+
+        [DYMEPubConverter doAsync:^{
+            
+            [_converter.books enumerateObjectsUsingBlock:^(DYMEPubBook * _Nonnull book, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                [DYMEPubConverter doInMainThread:^{
+                    [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"正在转化\n《%@》\n...", book.bookName]];
+                }];
+                
+                [book parse];
+            }];
+            
+        } completion:^{
+            [SVProgressHUD showSuccessWithStatus:@"转化完成"];
+            sender.enabled = YES;
+        }];
+    }];
+}
+
 
 
 @end

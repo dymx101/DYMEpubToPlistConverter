@@ -17,6 +17,12 @@
 @property (nonatomic, strong, readonly) NSString *bookName;
 /// 创建者/作者
 @property (nonatomic, strong, readonly) NSString *creator;
+/// ID
+@property (nonatomic, strong, readonly) NSString *identifier;
+/// 简介
+@property (nonatomic, strong, readonly) NSString *desc;
+/// 书名-From MetaData
+@property (nonatomic, strong, readonly) NSString *title;
 
 -(instancetype)initWithEPubPath:(NSString *)epubPath;
 

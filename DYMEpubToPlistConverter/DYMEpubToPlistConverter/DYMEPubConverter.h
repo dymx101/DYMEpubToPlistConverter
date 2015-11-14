@@ -12,9 +12,15 @@
 @interface DYMEPubConverter : NSObject
 
 @property (nonatomic, strong, readonly) NSArray     *epubFiles;
+@property (nonatomic, strong, readonly) NSArray     *books;
 
 -(void)loadEpubFiles:(dispatch_block_t)completion;
 
 -(DYMEPubBook *)bookAtIndex:(NSUInteger)index;
+
+
++(void)doAsync:(dispatch_block_t)block completion:(dispatch_block_t)completionBlock;
+
++(void)doInMainThread:(dispatch_block_t)block;
 
 @end

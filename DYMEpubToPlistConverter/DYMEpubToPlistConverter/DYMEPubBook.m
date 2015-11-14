@@ -52,6 +52,15 @@
     return nil;
 }
 
+-(NSString *)plistPath {
+    NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *plistPath = [documentPath stringByAppendingPathComponent:@"_Converted"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:plistPath]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:plistPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return plistPath;
+}
+
 -(void)unzip {
     ZipArchive *za = [[ZipArchive alloc] init];
     NSString *unzipPath = self.unzipPath;
@@ -70,6 +79,10 @@
 }
 
 -(void)parse {
+    
+    if ([self.bookName isEqualToString:@"吉檀迦利"]) {
+        NSLog(@"aaa");
+    }
     
     [self unzip];
     
@@ -139,6 +152,21 @@
         TBXMLElement *creator = [TBXML childElementNamed:@"dc:creator" parentElement:metaData];
         if (creator != nil) {
             _creator = [TBXML textForElement:creator];
+        }
+        
+        TBXMLElement *identifier = [TBXML childElementNamed:@"dc:identifier" parentElement:metaData];
+        if (identifier != nil) {
+            _identifier = [TBXML textForElement:identifier];
+        }
+        
+        TBXMLElement *desc = [TBXML childElementNamed:@"dc:description" parentElement:metaData];
+        if (desc != nil) {
+            _desc = [TBXML textForElement:desc];
+        }
+        
+        TBXMLElement *title = [TBXML childElementNamed:@"dc:title" parentElement:metaData];
+        if (title != nil) {
+            _title = [TBXML textForElement:title];
         }
     }
     
@@ -216,22 +244,27 @@
 -(void)loadContents {
     NSArray *allChapters = [self.chapterFileDic allValues];
     [allChapters enumerateObjectsUsingBlock:^(DYMEPubChapterFile *  _Nonnull chapterFile, NSUInteger idx, BOOL * _Nonnull stop) {
-        if (chapterFile.href) {
+        NSLog(@"%@", chapterFile);
+        if (chapterFile.href && [chapterFile.mediaType isEqualToString:@"application/xhtml+xml"]) {
             NSString *chapterPath = [_contentPath stringByAppendingPathComponent:chapterFile.href];
             NSString *content = [NSString stringWithContentsOfFile:chapterPath encoding:NSUTF8StringEncoding error:nil];
-            content = [content stringByReplacingOccurrencesOfString:@"<h1>" withString:@""];
-            content = [content stringByReplacingOccurrencesOfString:@"</h1>" withString:@"\n\n"];
-            content = [content stringByReplacingOccurrencesOfString:@"<p>" withString:@"    "];
-            content = [content stringByReplacingOccurrencesOfString:@"</p>" withString:@"\n\n"];
-            content = [content stringByReplacingOccurrencesOfString:@"&ldquo;" withString:@"“"];
-            content = [content stringByReplacingOccurrencesOfString:@"&rdquo;" withString:@"” "];
-            content = [content stringByReplacingOccurrencesOfString:@"&lsquo;" withString:@"‘"];
-            content = [content stringByReplacingOccurrencesOfString:@"&rsquo;" withString:@"’ "];
-            
-            content = [self stringByStrippingHTML:content];
-            NSLog(@"%@", content);
-            
-            chapterFile.content = content;
+            if (content) {
+                content = [content stringByReplacingOccurrencesOfString:@"<h1>" withString:@""];
+                content = [content stringByReplacingOccurrencesOfString:@"</h1>" withString:@"\n\n"];
+                content = [content stringByReplacingOccurrencesOfString:@"<p>" withString:@"    "];
+                content = [content stringByReplacingOccurrencesOfString:@"</p>" withString:@"\n\n"];
+                content = [content stringByReplacingOccurrencesOfString:@"&ldquo;" withString:@"“"];
+                content = [content stringByReplacingOccurrencesOfString:@"&rdquo;" withString:@"” "];
+                content = [content stringByReplacingOccurrencesOfString:@"&lsquo;" withString:@"‘"];
+                content = [content stringByReplacingOccurrencesOfString:@"&rsquo;" withString:@"’ "];
+                
+                content = [self stringByStrippingHTML:content];
+                //            NSLog(@"%@", content);
+                
+                chapterFile.content = content;
+            } else {
+                NSLog(@"Not a html, mediaType:%@", chapterFile.mediaType);
+            }
         }
     }];
 }
@@ -247,8 +280,8 @@
 -(NSArray *)sortedChapters {
     NSMutableArray *sortedChapters = [NSMutableArray array];
     [self.spines enumerateObjectsUsingBlock:^(NSString * _Nonnull chapterID, NSUInteger idx, BOOL * _Nonnull stop) {
-        id chapter = self.chapterFileDic[chapterID];
-        if (chapter) {
+        DYMEPubChapterFile *chapter = self.chapterFileDic[chapterID];
+        if (chapter && [chapter.mediaType isEqualToString:@"application/xhtml+xml"]) {
             [sortedChapters addObject:chapter];
         }
     }];
@@ -262,9 +295,9 @@
     NSMutableDictionary *bookDic = [NSMutableDictionary dictionary];
     bookDic[@"status"] = @"已完成";
     bookDic[@"author"] = self.creator;
-    bookDic[@"isbn"] = @"12345678";
+    bookDic[@"isbn"] = self.identifier;
     bookDic[@"src"] = @"default.png";
-    bookDic[@"title"] = self.bookName;
+    bookDic[@"title"] = self.title ? : self.bookName;
     bookDic[@"cover"] = @"no_cover.png";
     
     NSMutableArray *partTitleArr = [NSMutableArray array];
@@ -287,7 +320,7 @@
         [innerChapters addObject:chapterDic];
     }];
     
-    NSString *plistPath = [_contentPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", self.bookName]];
+    NSString *plistPath = [[self plistPath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", bookDic[@"title"]]];
     [bookDic writeToFile:plistPath atomically:YES];
 }
 

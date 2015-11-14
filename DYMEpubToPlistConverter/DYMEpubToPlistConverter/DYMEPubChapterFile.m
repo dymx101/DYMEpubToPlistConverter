@@ -10,4 +10,8 @@
 
 @implementation DYMEPubChapterFile
 
+-(NSString *)description {
+    return [NSString stringWithFormat:@"chapterID:%@, href:%@, mediatype:%@, title:%@", _chapterID, _href, _mediaType, _title];
+}
+
 @end

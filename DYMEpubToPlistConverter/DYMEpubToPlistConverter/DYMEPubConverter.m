@@ -25,12 +25,20 @@
         
         _epubFiles = [[NSBundle mainBundle] pathsForResourcesOfType:@"epub" inDirectory:@"epub"];
         
+        NSMutableArray *books = [NSMutableArray array];
+        [_epubFiles enumerateObjectsUsingBlock:^(NSString * _Nonnull epubFile, NSUInteger idx, BOOL * _Nonnull stop) {
+            DYMEPubBook *book = [[DYMEPubBook alloc] initWithEPubPath:epubFile];
+            [books addObject:book];
+        }];
+        
+        _books = books;
+        
     } completion:completion];
 }
 
 -(DYMEPubBook *)bookAtIndex:(NSUInteger)index {
-    if (index < _epubFiles.count) {
-        return [[DYMEPubBook alloc] initWithEPubPath:_epubFiles[index]];
+    if (index < _books.count) {
+        return _books[index];
     }
     
     return nil;
@@ -47,6 +55,11 @@
         
         dispatch_async(dispatch_get_main_queue(), completionBlock);
     });
+}
+
++(void)doInMainThread:(dispatch_block_t)block {
+    
+    dispatch_async(dispatch_get_main_queue(), block);
 }
 
 @end
