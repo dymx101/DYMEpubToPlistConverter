@@ -319,7 +319,7 @@
     NSString *plistPath = [[self plistPath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", bookDic[@"title"]]];
     [bookDic writeToFile:plistPath atomically:YES];
     
-    NSLog(@"转化完成：%@", plistPath);
+    NSLog(@"转化完成：\n%@", plistPath);
 }
 
 @end
