@@ -295,6 +295,7 @@
     bookDic[@"src"] = @"default.png";
     bookDic[@"title"] = self.title ? : self.bookName;
     bookDic[@"cover"] = @"no_cover.png";
+    bookDic[@"order"] = @"9999";
     
     NSMutableArray *partTitleArr = [NSMutableArray array];
     bookDic[@"partTitleArr"] = partTitleArr;
