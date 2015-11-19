@@ -21,14 +21,17 @@
     [DYMEPubConverter doAsync:^{
         
         NSArray *plistFiles = [[NSBundle mainBundle] pathsForResourcesOfType:@"plist" inDirectory:@"plist"];
+        __block long index = 0;
         
         [plistFiles enumerateObjectsUsingBlock:^(NSString * _Nonnull plistFile, NSUInteger idx, BOOL * _Nonnull stop) {
             NSMutableDictionary *bookDic = [NSMutableDictionary dictionaryWithContentsOfFile:plistFile];
-            bookDic[@"isbn"] = @"111"; //
+            bookDic[@"isbn"] = [NSString stringWithFormat:@"isbn%05ld", index];
             bookDic[@"cover"] = @"no_cover.png"; //
             bookDic[@"order"] = @"9999"; //
             
             [bookDic writeToFile:plistFile atomically:YES];
+            
+            index++;
         }];
         
     } completion:completion];
