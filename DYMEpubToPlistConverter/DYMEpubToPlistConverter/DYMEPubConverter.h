@@ -14,6 +14,8 @@
 @property (nonatomic, strong, readonly) NSArray     *epubFiles;
 @property (nonatomic, strong, readonly) NSArray     *books;
 
+-(void)updatePlistFiles:(dispatch_block_t)completion;
+
 -(void)loadEpubFiles:(dispatch_block_t)completion;
 
 -(DYMEPubBook *)bookAtIndex:(NSUInteger)index;

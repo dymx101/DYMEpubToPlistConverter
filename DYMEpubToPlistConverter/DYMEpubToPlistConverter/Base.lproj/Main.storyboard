@@ -65,11 +65,26 @@
                                     <action selector="startConvertion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uPC-Ak-07c"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgA-QM-oHH">
+                                <rect key="frame" x="226" y="344" width="149" height="40"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.78744292709999997" green="0.89007260099999996" blue="0.84890161090000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" title="Update Plist Files">
+                                    <color key="titleColor" red="0.0" green="0.37348451100000002" blue="0.65563841540000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startUpdatingPlistFiles:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sfJ-EK-4za"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="aj7-VN-kkk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3vb-8n-Fad"/>
+                            <constraint firstItem="sgA-QM-oHH" firstAttribute="top" secondItem="aj7-VN-kkk" secondAttribute="bottom" constant="16" id="9Va-5b-frx"/>
+                            <constraint firstItem="sgA-QM-oHH" firstAttribute="centerX" secondItem="aj7-VN-kkk" secondAttribute="centerX" id="AK9-T6-mdH"/>
                             <constraint firstItem="aj7-VN-kkk" firstAttribute="top" secondItem="bsD-TA-9Xb" secondAttribute="bottom" constant="73" id="ZMx-6s-rxs"/>
                             <constraint firstItem="bsD-TA-9Xb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ann-Jn-u0Z"/>
                             <constraint firstItem="bsD-TA-9Xb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="rJK-6e-Y2a"/>

@@ -291,11 +291,11 @@
     NSMutableDictionary *bookDic = [NSMutableDictionary dictionary];
     bookDic[@"status"] = @"已完成";
     bookDic[@"author"] = self.creator;
-    bookDic[@"isbn"] = self.identifier;
+    bookDic[@"isbn"] = self.identifier; //
     bookDic[@"src"] = @"default.png";
     bookDic[@"title"] = self.title ? : self.bookName;
-    bookDic[@"cover"] = @"no_cover.png";
-    bookDic[@"order"] = @"9999";
+    bookDic[@"cover"] = @"no_cover.png"; //
+    bookDic[@"order"] = @"9999"; //
     
     NSMutableArray *partTitleArr = [NSMutableArray array];
     bookDic[@"partTitleArr"] = partTitleArr;

@@ -17,7 +17,22 @@
 
 @implementation DYMEPubConverter
 
-
+-(void)updatePlistFiles:(dispatch_block_t)completion {
+    [DYMEPubConverter doAsync:^{
+        
+        NSArray *plistFiles = [[NSBundle mainBundle] pathsForResourcesOfType:@"plist" inDirectory:@"plist"];
+        
+        [plistFiles enumerateObjectsUsingBlock:^(NSString * _Nonnull plistFile, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSMutableDictionary *bookDic = [NSMutableDictionary dictionaryWithContentsOfFile:plistFile];
+            bookDic[@"isbn"] = @"111"; //
+            bookDic[@"cover"] = @"no_cover.png"; //
+            bookDic[@"order"] = @"9999"; //
+            
+            [bookDic writeToFile:plistFile atomically:YES];
+        }];
+        
+    } completion:completion];
+}
 
 -(void)loadEpubFiles:(dispatch_block_t)completion {
     

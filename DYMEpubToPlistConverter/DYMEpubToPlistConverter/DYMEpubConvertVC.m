@@ -24,6 +24,16 @@
     _converter = [DYMEPubConverter new];
 }
 
+- (IBAction)startUpdatingPlistFiles:(UIButton *)sender {
+    sender.enabled = NO;
+    
+    [SVProgressHUD showWithStatus:@"正在更新Plist文件"];
+    [_converter updatePlistFiles:^{
+        [SVProgressHUD showSuccessWithStatus:@"更新完成"];
+        sender.enabled = YES;
+    }];
+}
+
 - (IBAction)startConvertion:(UIButton *)sender {
     sender.enabled = NO;
     
