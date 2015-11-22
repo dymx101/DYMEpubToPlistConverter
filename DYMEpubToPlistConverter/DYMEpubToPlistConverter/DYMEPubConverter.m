@@ -24,6 +24,9 @@
         __block long index = 0;
         
         [plistFiles enumerateObjectsUsingBlock:^(NSString * _Nonnull plistFile, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            NSLog(@"%@", plistFile);
+            
             NSMutableDictionary *bookDic = [NSMutableDictionary dictionaryWithContentsOfFile:plistFile];
             bookDic[@"isbn"] = [NSString stringWithFormat:@"isbn%05ld", index];
             bookDic[@"cover"] = @"no_cover.png"; //
