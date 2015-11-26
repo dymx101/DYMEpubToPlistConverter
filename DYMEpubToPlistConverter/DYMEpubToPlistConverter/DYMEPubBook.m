@@ -245,14 +245,24 @@
             NSString *chapterPath = [_contentPath stringByAppendingPathComponent:chapterFile.href];
             NSString *content = [NSString stringWithContentsOfFile:chapterPath encoding:NSUTF8StringEncoding error:nil];
             if (content) {
+                // 消除回车换行
+                content = [content stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+                content = [content stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+                
+                // 转化标签
                 content = [content stringByReplacingOccurrencesOfString:@"<h1>" withString:@""];
                 content = [content stringByReplacingOccurrencesOfString:@"</h1>" withString:@"\n\n"];
+                content = [content stringByReplacingOccurrencesOfString:@"<br/>" withString:@"\n"];
                 content = [content stringByReplacingOccurrencesOfString:@"<p>" withString:@"    "];
                 content = [content stringByReplacingOccurrencesOfString:@"</p>" withString:@"\n\n"];
+                
+                // 转化encode字符
                 content = [content stringByReplacingOccurrencesOfString:@"&ldquo;" withString:@"“"];
                 content = [content stringByReplacingOccurrencesOfString:@"&rdquo;" withString:@"” "];
                 content = [content stringByReplacingOccurrencesOfString:@"&lsquo;" withString:@"‘"];
                 content = [content stringByReplacingOccurrencesOfString:@"&rsquo;" withString:@"’ "];
+                content = [content stringByReplacingOccurrencesOfString:@"&amp;nbsp;" withString:@" "];
+                content = [content stringByReplacingOccurrencesOfString:@"&nbsp;" withString:@" "];
                 
                 content = [self stringByStrippingHTML:content];
                 //            NSLog(@"%@", content);
@@ -317,7 +327,7 @@
         [innerChapters addObject:chapterDic];
     }];
     
-    NSString *plistPath = [[self plistPath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", bookDic[@"title"]]];
+    NSString *plistPath = [[self plistPath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", self.bookName]];
     [bookDic writeToFile:plistPath atomically:YES];
     
     NSLog(@"转化完成：\n%@", plistPath);
