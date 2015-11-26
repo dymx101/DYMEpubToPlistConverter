@@ -249,11 +249,15 @@
                 content = [content stringByReplacingOccurrencesOfString:@"\r" withString:@""];
                 content = [content stringByReplacingOccurrencesOfString:@"\n" withString:@""];
                 
+                // for harry potter!!!
+                content = [content stringByReplacingOccurrencesOfString:@"　　" withString:@""];
+                content = [content stringByReplacingOccurrencesOfString:@"  " withString:@""];
+                
                 // 转化标签
                 content = [content stringByReplacingOccurrencesOfString:@"<h1>" withString:@""];
                 content = [content stringByReplacingOccurrencesOfString:@"</h1>" withString:@"\n\n"];
                 content = [content stringByReplacingOccurrencesOfString:@"<br/>" withString:@"\n"];
-                content = [content stringByReplacingOccurrencesOfString:@"<p>" withString:@"    "];
+                content = [content stringByReplacingOccurrencesOfString:@"<p>" withString:@""];
                 content = [content stringByReplacingOccurrencesOfString:@"</p>" withString:@"\n\n"];
                 
                 // 转化encode字符
@@ -320,7 +324,7 @@
     [sortedChapter enumerateObjectsUsingBlock:^(DYMEPubChapterFile *  _Nonnull chapter, NSUInteger idx, BOOL * _Nonnull stop) {
         NSMutableDictionary *chapterDic = [NSMutableDictionary dictionary];
         chapterDic[@"chapterContent"] = chapter.content ? : @"";
-        chapterDic[@"chapterTitle"] = chapter.title;
+        chapterDic[@"chapterTitle"] = chapter.title.length > 0 ? chapter.title : [NSString stringWithFormat:@"第%@章", @(idx + 1)];
         chapterDic[@"chapterSrcs"] = @" ";
         chapterDic[@"href"] = chapter.href;
         
