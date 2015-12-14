@@ -13,6 +13,8 @@
 @interface DYMEpubConvertVC () {
     DYMEPubConverter    *_converter;
 }
+@property (weak, nonatomic) IBOutlet UITextField *tfPlistName;
+@property (weak, nonatomic) IBOutlet UITextField *tfPlistParts;
 
 @end
 
@@ -58,6 +60,33 @@
     }];
 }
 
+- (IBAction)addChapterTitles:(UIButton *)sender {
+    sender.enabled = NO;
+    
+    [SVProgressHUD showWithStatus:@"Adding chapter titles"];
+    [_converter updateChapterTitles:^{
+        [SVProgressHUD showSuccessWithStatus:@"Done"];
+        sender.enabled = YES;
+    }];
+}
+
+- (IBAction)splitPlist:(id)sender {
+    
+    if (_tfPlistParts.text.length <= 0) {
+        [SVProgressHUD showInfoWithStatus:@"请输入拆分数量"];
+        return;
+    }
+    
+    
+    [SVProgressHUD showWithStatus:@"正在拆分"];
+    [DYMEPubConverter doAsync:^{
+        
+        [_converter splitPlistIntoCount:[_tfPlistParts.text integerValue]];
+    } completion:^{
+        [SVProgressHUD showSuccessWithStatus:@"拆分完成"];
+    }];
+    
+}
 
 
 @end

@@ -17,6 +17,78 @@
 
 @implementation DYMEPubConverter
 
+-(void)updateChapterTitles:(dispatch_block_t)completion {
+    [DYMEPubConverter doAsync:^{
+        
+        NSArray *plistFiles = [[NSBundle mainBundle] pathsForResourcesOfType:@"plist" inDirectory:@"plist"];
+        __block long index = 0;
+        
+        [plistFiles enumerateObjectsUsingBlock:^(NSString * _Nonnull plistFile, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            NSLog(@"%@", plistFile);
+            
+            NSMutableDictionary *bookDic = [NSMutableDictionary dictionaryWithContentsOfFile:plistFile];
+            NSArray *chapters = bookDic[@"chapterArrArr"];
+            NSArray *innerChapters = chapters.firstObject;
+            
+            /// 修改的chapters
+            NSMutableArray *editingChapters = [NSMutableArray array];
+            [innerChapters enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                NSMutableDictionary *editingChapter = [obj mutableCopy];
+                if (editingChapter) {
+                    editingChapter[@"chapterTitle"] = [NSString stringWithFormat:@"第%@章", @(idx + 1)];
+                    
+                    [editingChapters addObject:editingChapter];
+                }
+            }];
+            
+            bookDic[@"chapterArrArr"] = @[editingChapters];
+            
+            [bookDic writeToFile:plistFile atomically:YES];
+            
+            index++;
+        }];
+        
+    } completion:completion];
+}
+
+-(void)splitPlistIntoCount:(NSUInteger)partCount {
+    NSArray *plistFiles = [[NSBundle mainBundle] pathsForResourcesOfType:@"plist" inDirectory:@"large_plist"];
+    if (plistFiles.count == 0) {
+        return;
+    }
+    
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist" inDirectory:@"large_plist"];
+    NSString *filePath = plistFiles.firstObject;
+    NSString *fileName = [[filePath lastPathComponent] stringByDeletingPathExtension];
+    NSDictionary *bookDic = [NSDictionary dictionaryWithContentsOfFile:filePath];
+    NSArray *chapters = bookDic[@"chapterArrArr"];
+    NSArray *innerChapters = chapters.firstObject;
+    
+    NSUInteger maxChapterCount = innerChapters.count / partCount;
+    NSUInteger location = 0;
+
+    for (NSInteger i = 0; i < partCount; i++) {
+        
+        NSUInteger range = maxChapterCount;
+        if (innerChapters.count - location <  maxChapterCount) {
+            range = innerChapters.count - location;
+        }
+        NSArray *subArr = [innerChapters subarrayWithRange:NSMakeRange(location, range)];
+        
+        NSMutableDictionary *bookPart = [bookDic mutableCopy];
+        bookPart[@"chapterArrArr"] = @[subArr];
+        
+        NSString *partFileName = [NSString stringWithFormat:@"%@%@.plist", fileName, @(i+1)];
+        NSString *partFilePath = [[filePath stringByDeletingLastPathComponent] stringByAppendingPathComponent:partFileName];
+        [bookPart writeToFile:partFilePath atomically:YES];
+        
+        NSLog(@"%@", partFilePath);
+        
+        location = location + range;
+    }
+}
+
 -(void)updatePlistFiles:(dispatch_block_t)completion {
     [DYMEPubConverter doAsync:^{
         

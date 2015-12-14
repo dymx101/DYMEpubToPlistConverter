@@ -14,6 +14,11 @@
 @property (nonatomic, strong, readonly) NSArray     *epubFiles;
 @property (nonatomic, strong, readonly) NSArray     *books;
 
+/// 拆分大plist文件
+-(void)splitPlistIntoCount:(NSUInteger)partCount;
+
+-(void)updateChapterTitles:(dispatch_block_t)completion;
+
 -(void)updatePlistFiles:(dispatch_block_t)completion;
 
 -(void)loadEpubFiles:(dispatch_block_t)completion;

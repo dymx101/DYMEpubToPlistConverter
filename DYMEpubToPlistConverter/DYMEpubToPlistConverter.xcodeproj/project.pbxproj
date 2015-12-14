@@ -17,6 +17,7 @@
 		EA21B85E1BF43585006A0444 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA21B85C1BF43585006A0444 /* LaunchScreen.storyboard */; };
 		EA21B8661BF4361A006A0444 /* epub in Resources */ = {isa = PBXBuildFile; fileRef = EA21B8651BF4361A006A0444 /* epub */; };
 		EA21B8691BF438B7006A0444 /* DYMEPubConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21B8681BF438B7006A0444 /* DYMEPubConverter.m */; };
+		EA228CA41C1E6D4D0062CFFA /* large_plist in Resources */ = {isa = PBXBuildFile; fileRef = EA228CA31C1E6D4D0062CFFA /* large_plist */; };
 		EA2AD3041BFE1C9400236910 /* plist in Resources */ = {isa = PBXBuildFile; fileRef = EA2AD3031BFE1C9400236910 /* plist */; };
 		EAE3484F1BF6345F009D86AD /* DYMEPubChapterFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE3484E1BF6345F009D86AD /* DYMEPubChapterFile.m */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,7 @@
 		EA21B8651BF4361A006A0444 /* epub */ = {isa = PBXFileReference; lastKnownFileType = folder; path = epub; sourceTree = "<group>"; };
 		EA21B8671BF438B7006A0444 /* DYMEPubConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYMEPubConverter.h; sourceTree = "<group>"; };
 		EA21B8681BF438B7006A0444 /* DYMEPubConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYMEPubConverter.m; sourceTree = "<group>"; };
+		EA228CA31C1E6D4D0062CFFA /* large_plist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = large_plist; sourceTree = "<group>"; };
 		EA2AD3031BFE1C9400236910 /* plist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = plist; sourceTree = "<group>"; };
 		EAE3484D1BF6345F009D86AD /* DYMEPubChapterFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYMEPubChapterFile.h; sourceTree = "<group>"; };
 		EAE3484E1BF6345F009D86AD /* DYMEPubChapterFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYMEPubChapterFile.m; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		EA21B8421BF43585006A0444 = {
 			isa = PBXGroup;
 			children = (
+				EA228CA31C1E6D4D0062CFFA /* large_plist */,
 				EA2AD3031BFE1C9400236910 /* plist */,
 				EA21B8651BF4361A006A0444 /* epub */,
 				EA21B84D1BF43585006A0444 /* DYMEpubToPlistConverter */,
@@ -185,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA21B8661BF4361A006A0444 /* epub in Resources */,
+				EA228CA41C1E6D4D0062CFFA /* large_plist in Resources */,
 				EA2AD3041BFE1C9400236910 /* plist in Resources */,
 				EA21B85E1BF43585006A0444 /* LaunchScreen.storyboard in Resources */,
 				EA21B85B1BF43585006A0444 /* Assets.xcassets in Resources */,

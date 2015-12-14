@@ -250,8 +250,8 @@
                 content = [content stringByReplacingOccurrencesOfString:@"\n" withString:@""];
                 
                 // for harry potter!!!
-                content = [content stringByReplacingOccurrencesOfString:@"　　" withString:@""];
-                content = [content stringByReplacingOccurrencesOfString:@"  " withString:@""];
+//                content = [content stringByReplacingOccurrencesOfString:@"　　" withString:@""];
+//                content = [content stringByReplacingOccurrencesOfString:@"  " withString:@""];
                 
                 // 转化标签
                 content = [content stringByReplacingOccurrencesOfString:@"<h1>" withString:@""];

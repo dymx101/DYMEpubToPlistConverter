@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Epub ConvertVC-->
@@ -17,48 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsD-TA-9Xb">
-                                <rect key="frame" x="166" y="186" width="268" height="29"/>
-                                <animations/>
-                                <attributedString key="attributedText">
-                                    <fragment content="EPub">
-                                        <attributes>
-                                            <color key="NSColor" red="0.26674127101164891" green="0.31820183303221905" blue="0.7428779987373737" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="24" name="HelveticaNeue-Medium"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" to ">
-                                        <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <font key="NSFont" size="24" name="HelveticaNeue-Medium"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="PList ">
-                                        <attributes>
-                                            <color key="NSColor" red="0.6819168244949495" green="0.18334881605999803" blue="0.31812954603662708" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="24" name="HelveticaNeue-Medium"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="Converter">
-                                        <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <font key="NSFont" size="24" name="HelveticaNeue-Medium"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aj7-VN-kkk">
-                                <rect key="frame" x="229" y="288" width="143" height="40"/>
+                                <rect key="frame" x="20" y="20" width="123" height="40"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.78744292713946706" green="0.89007260101010099" blue="0.84890161092913818" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ovj-o1-9zt"/>
+                                    <constraint firstAttribute="width" constant="123" id="try-Lq-iFP"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
-                                <state key="normal" title="Start Convertion">
+                                <state key="normal" title="开始转化EPub">
                                     <color key="titleColor" red="0.0" green="0.3734845110354087" blue="0.65563841540404044" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -66,7 +36,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgA-QM-oHH">
-                                <rect key="frame" x="226" y="344" width="149" height="40"/>
+                                <rect key="frame" x="166" y="20" width="149" height="40"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.78744292709999997" green="0.89007260099999996" blue="0.84890161090000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
@@ -78,21 +48,70 @@
                                     <action selector="startUpdatingPlistFiles:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sfJ-EK-4za"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NwN-oH-iNB">
+                                <rect key="frame" x="20" y="77" width="172" height="40"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.78744292709999997" green="0.89007260099999996" blue="0.84890161090000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="172" id="Cjr-Ot-3ip"/>
+                                    <constraint firstAttribute="height" constant="40" id="lDp-hN-chJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" title="Add Title to Chapers">
+                                    <color key="titleColor" red="0.0" green="0.37348451100000002" blue="0.65563841540000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addChapterTitles:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qbM-ci-M0b"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3" placeholder="分成几本书?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="szO-Gj-Rdu">
+                                <rect key="frame" x="20" y="138" width="128" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="HvV-Ts-eho"/>
+                                    <constraint firstAttribute="height" constant="30" id="iAz-6U-Ynt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7SW-3h-JRd">
+                                <rect key="frame" x="171" y="133" width="84" height="40"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.78744292709999997" green="0.89007260099999996" blue="0.84890161090000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" title="拆分Plist">
+                                    <color key="titleColor" red="0.0" green="0.37348451100000002" blue="0.65563841540000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="splitPlist:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uPT-hO-Jsv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="aj7-VN-kkk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3vb-8n-Fad"/>
-                            <constraint firstItem="sgA-QM-oHH" firstAttribute="top" secondItem="aj7-VN-kkk" secondAttribute="bottom" constant="16" id="9Va-5b-frx"/>
-                            <constraint firstItem="sgA-QM-oHH" firstAttribute="centerX" secondItem="aj7-VN-kkk" secondAttribute="centerX" id="AK9-T6-mdH"/>
-                            <constraint firstItem="aj7-VN-kkk" firstAttribute="top" secondItem="bsD-TA-9Xb" secondAttribute="bottom" constant="73" id="ZMx-6s-rxs"/>
-                            <constraint firstItem="bsD-TA-9Xb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ann-Jn-u0Z"/>
-                            <constraint firstItem="bsD-TA-9Xb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="rJK-6e-Y2a"/>
+                            <constraint firstItem="sgA-QM-oHH" firstAttribute="centerY" secondItem="aj7-VN-kkk" secondAttribute="centerY" id="1kg-1v-5hR"/>
+                            <constraint firstItem="7SW-3h-JRd" firstAttribute="centerY" secondItem="szO-Gj-Rdu" secondAttribute="centerY" id="2H9-Mx-8Xz"/>
+                            <constraint firstItem="NwN-oH-iNB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="CGz-SE-BaL"/>
+                            <constraint firstItem="szO-Gj-Rdu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Jn8-uY-ove"/>
+                            <constraint firstItem="7SW-3h-JRd" firstAttribute="leading" secondItem="szO-Gj-Rdu" secondAttribute="trailing" constant="23" id="R9r-z5-Kx8"/>
+                            <constraint firstItem="szO-Gj-Rdu" firstAttribute="top" secondItem="NwN-oH-iNB" secondAttribute="bottom" constant="21" id="T0V-Eo-AXN"/>
+                            <constraint firstItem="aj7-VN-kkk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="T61-UU-Tkq"/>
+                            <constraint firstItem="aj7-VN-kkk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="hEW-pc-xAB"/>
+                            <constraint firstItem="NwN-oH-iNB" firstAttribute="top" secondItem="sgA-QM-oHH" secondAttribute="bottom" constant="17" id="hZw-01-4Hb"/>
+                            <constraint firstItem="sgA-QM-oHH" firstAttribute="leading" secondItem="aj7-VN-kkk" secondAttribute="trailing" constant="23" id="lC9-4d-KQF"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tfPlistParts" destination="szO-Gj-Rdu" id="Zmy-Rs-FrF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="435" y="389"/>
         </scene>
     </scenes>
 </document>
