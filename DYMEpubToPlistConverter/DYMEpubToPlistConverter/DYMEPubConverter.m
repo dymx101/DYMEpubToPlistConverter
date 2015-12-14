@@ -66,14 +66,18 @@
     NSArray *innerChapters = chapters.firstObject;
     
     NSUInteger maxChapterCount = innerChapters.count / partCount;
+    
     NSUInteger location = 0;
 
     for (NSInteger i = 0; i < partCount; i++) {
         
         NSUInteger range = maxChapterCount;
-        if (innerChapters.count - location <  maxChapterCount) {
-            range = innerChapters.count - location;
+        
+        if (i == partCount - 1) { // last chapter
+            NSUInteger restCount = innerChapters.count - location;
+            range = restCount;
         }
+        
         NSArray *subArr = [innerChapters subarrayWithRange:NSMakeRange(location, range)];
         
         NSMutableDictionary *bookPart = [bookDic mutableCopy];
