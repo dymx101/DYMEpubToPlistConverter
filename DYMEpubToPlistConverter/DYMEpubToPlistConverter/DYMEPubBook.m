@@ -15,6 +15,8 @@
 
 @property (nonatomic, strong) NSDictionary  *chapterFileDic;
 
+@property (nonatomic, strong) NSDictionary  *chapterFileDicByHref;
+
 @property (nonatomic, strong) NSArray       *spines;
 
 /// opf文件路径
@@ -169,17 +171,22 @@
     // Manifest
     TBXMLElement *manifest = [TBXML childElementNamed:@"manifest" parentElement:contentxml.rootXMLElement];
     TBXMLElement *item = manifest->firstChild;
+    
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *dictByHref = [[NSMutableDictionary alloc] init];
     while (item) {
         DYMEPubChapterFile *file = [DYMEPubChapterFile new];
         file.chapterID = [TBXML valueOfAttributeNamed:@"id" forElement:item];
         file.href = [TBXML valueOfAttributeNamed:@"href" forElement:item];
         file.mediaType = [TBXML valueOfAttributeNamed:@"media-type" forElement:item];
+        
         [dict setObject:file forKey:file.chapterID];
+        [dictByHref setObject:file forKey:file.href];
         
         item = item->nextSibling;
     }
     self.chapterFileDic = [NSDictionary dictionaryWithDictionary:dict];
+    self.chapterFileDicByHref = [NSDictionary dictionaryWithDictionary:dictByHref];
     
     // Spine
     TBXMLElement *spine = [TBXML childElementNamed:@"spine" parentElement:contentxml.rootXMLElement];
@@ -226,16 +233,53 @@
     
     // chapter标题
     while (navpoint) {
-        NSString *tocid = [TBXML valueOfAttributeNamed:@"id" forElement:navpoint];
-        TBXMLElement *navLabel = navpoint->firstChild;
-        TBXMLElement *text = navLabel->firstChild;
-        NSString *title = [TBXML textForElement:text];
-
-        DYMEPubChapterFile *file = self.chapterFileDic[tocid];
-        file.title = title;
+        
+        [self goThroughNavPoint:navpoint naviPointKey:navPointKey];
+        
         navpoint = navpoint->nextSibling;
     }
 }
+
+-(void)goThroughNavPoint:(TBXMLElement *)navPoint naviPointKey:(NSString *)navPointKey {
+    
+    if (navPoint) {
+        
+        TBXMLElement *navLabel = [self extractNavPoint:navPoint];
+        
+        TBXMLElement *nextSibling = navLabel->nextSibling;
+        while (nextSibling) {
+            
+            NSString *siblingName = [NSString stringWithUTF8String:nextSibling->name];
+            if ([siblingName isEqualToString:navPointKey]) {
+                [self goThroughNavPoint:nextSibling naviPointKey:navPointKey];
+            }
+            
+            nextSibling = nextSibling->nextSibling;
+        }
+    }
+}
+
+-(TBXMLElement *)extractNavPoint:(TBXMLElement *)navPoint {
+    if (navPoint) {
+        NSString *tocid = [TBXML valueOfAttributeNamed:@"id" forElement:navPoint];
+        TBXMLElement *navLabel = navPoint->firstChild;
+        TBXMLElement *text = navLabel->firstChild;
+        NSString *title = [TBXML textForElement:text];
+        
+        DYMEPubChapterFile *file = self.chapterFileDic[tocid];
+        if (file == nil) {
+            TBXMLElement *content = navLabel->nextSibling;
+            NSString *src = [TBXML valueOfAttributeNamed:@"src" forElement:content];
+            file = self.chapterFileDicByHref[src];
+        }
+        file.title = title;
+        
+        return navLabel;
+    }
+    
+    return nil;
+}
+
 
 -(void)loadContents {
     NSArray *allChapters = [self.chapterFileDic allValues];
