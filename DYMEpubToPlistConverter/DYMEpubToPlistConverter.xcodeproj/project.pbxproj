@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C7D4A941EDAF874003D1B7A /* epub in Resources */ = {isa = PBXBuildFile; fileRef = 8C7D4A921EDAF874003D1B7A /* epub */; };
+		8C7D4A951EDAF874003D1B7A /* plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C7D4A931EDAF874003D1B7A /* plist */; };
 		8D9DC5BD39650B52ABDDBD0F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7CD8557D323AD62817BF1DB /* libPods.a */; };
 		EA0A471A1BF5CCE800C72BCF /* DYMEPubBook.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0A47191BF5CCE800C72BCF /* DYMEPubBook.m */; };
 		EA21B8501BF43585006A0444 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21B84F1BF43585006A0444 /* main.m */; };
@@ -15,15 +17,15 @@
 		EA21B8591BF43585006A0444 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA21B8571BF43585006A0444 /* Main.storyboard */; };
 		EA21B85B1BF43585006A0444 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA21B85A1BF43585006A0444 /* Assets.xcassets */; };
 		EA21B85E1BF43585006A0444 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA21B85C1BF43585006A0444 /* LaunchScreen.storyboard */; };
-		EA21B8661BF4361A006A0444 /* epub in Resources */ = {isa = PBXBuildFile; fileRef = EA21B8651BF4361A006A0444 /* epub */; };
 		EA21B8691BF438B7006A0444 /* DYMEPubConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = EA21B8681BF438B7006A0444 /* DYMEPubConverter.m */; };
 		EA228CA41C1E6D4D0062CFFA /* large_plist in Resources */ = {isa = PBXBuildFile; fileRef = EA228CA31C1E6D4D0062CFFA /* large_plist */; };
-		EA2AD3041BFE1C9400236910 /* plist in Resources */ = {isa = PBXBuildFile; fileRef = EA2AD3031BFE1C9400236910 /* plist */; };
 		EAE3484F1BF6345F009D86AD /* DYMEPubChapterFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE3484E1BF6345F009D86AD /* DYMEPubChapterFile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0187B348E0107463459D19EB /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		8C7D4A921EDAF874003D1B7A /* epub */ = {isa = PBXFileReference; lastKnownFileType = folder; path = epub; sourceTree = "<group>"; };
+		8C7D4A931EDAF874003D1B7A /* plist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = plist; sourceTree = "<group>"; };
 		C884ACE3C41CFA9BC114C726 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D7CD8557D323AD62817BF1DB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA0A47181BF5CCE800C72BCF /* DYMEPubBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYMEPubBook.h; sourceTree = "<group>"; };
@@ -38,11 +40,9 @@
 		EA21B85A1BF43585006A0444 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA21B85D1BF43585006A0444 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA21B85F1BF43585006A0444 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EA21B8651BF4361A006A0444 /* epub */ = {isa = PBXFileReference; lastKnownFileType = folder; path = epub; sourceTree = "<group>"; };
 		EA21B8671BF438B7006A0444 /* DYMEPubConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYMEPubConverter.h; sourceTree = "<group>"; };
 		EA21B8681BF438B7006A0444 /* DYMEPubConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYMEPubConverter.m; sourceTree = "<group>"; };
 		EA228CA31C1E6D4D0062CFFA /* large_plist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = large_plist; sourceTree = "<group>"; };
-		EA2AD3031BFE1C9400236910 /* plist */ = {isa = PBXFileReference; lastKnownFileType = folder; path = plist; sourceTree = "<group>"; };
 		EAE3484D1BF6345F009D86AD /* DYMEPubChapterFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYMEPubChapterFile.h; sourceTree = "<group>"; };
 		EAE3484E1BF6345F009D86AD /* DYMEPubChapterFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYMEPubChapterFile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,9 +79,9 @@
 		EA21B8421BF43585006A0444 = {
 			isa = PBXGroup;
 			children = (
+				8C7D4A921EDAF874003D1B7A /* epub */,
+				8C7D4A931EDAF874003D1B7A /* plist */,
 				EA228CA31C1E6D4D0062CFFA /* large_plist */,
-				EA2AD3031BFE1C9400236910 /* plist */,
-				EA21B8651BF4361A006A0444 /* epub */,
 				EA21B84D1BF43585006A0444 /* DYMEpubToPlistConverter */,
 				EA21B84C1BF43585006A0444 /* Products */,
 				333BE2CA7C7C0175D42C7BE6 /* Pods */,
@@ -187,10 +187,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA21B8661BF4361A006A0444 /* epub in Resources */,
 				EA228CA41C1E6D4D0062CFFA /* large_plist in Resources */,
-				EA2AD3041BFE1C9400236910 /* plist in Resources */,
+				8C7D4A941EDAF874003D1B7A /* epub in Resources */,
 				EA21B85E1BF43585006A0444 /* LaunchScreen.storyboard in Resources */,
+				8C7D4A951EDAF874003D1B7A /* plist in Resources */,
 				EA21B85B1BF43585006A0444 /* Assets.xcassets in Resources */,
 				EA21B8591BF43585006A0444 /* Main.storyboard in Resources */,
 			);
